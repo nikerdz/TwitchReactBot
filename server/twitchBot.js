@@ -1,12 +1,12 @@
 import tmi from 'tmi.js'
 
-const KEY_PHRASES = ['pog', 'hype', 'pogchamp']
+const KEY_PHRASES = ['pog', 'hype', 'kekw']
 
 function createReaction(phrase, message, user) {
   const templates = {
-    pog: `That was pog! ${user} just brought the energy.`,
-    hype: `Hype detected! The chat is buzzing around ${phrase}.`,
-    pogchamp: `PogChamp moment from ${user}!`  
+    pog: `🥳 That was pog! ${user} just brought the energy.`,
+    hype: `🤩 Hype detected! The chat is buzzing around ${phrase}.`,
+    kekw: `😂 ${user} got the whole chat laughing! KEKW moment!`  
   }
   return templates[phrase] || `Reacting to ${phrase}: ${message}`
 }

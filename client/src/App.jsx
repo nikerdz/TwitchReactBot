@@ -40,7 +40,7 @@ function App() {
       <section className="reaction-feed">
         <h2>Live reaction feed</h2>
         <p className="keyword-note">
-          Say any of these keywords in chat: <strong>pog</strong>, <strong>hype</strong>, <strong>pogchamp</strong>
+          Say any of these keywords in chat: <strong>pog</strong>, <strong>hype</strong>, <strong>kekw</strong>
         </p>
         {reactions.length === 0 ? (
           <p>No reactions yet. Open the Twitch channel chat and say one of the keywords above.</p>
