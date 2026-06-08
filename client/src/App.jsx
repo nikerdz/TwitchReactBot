@@ -6,7 +6,7 @@ function App() {
   useEffect(() => {
     async function fetchReactions() {
       try {
-        const response = await fetch('https://backend-bridge--bugwoozin.replit.app/reactions')
+        const response = await fetch('https://backend-bridge--bugwoozin.replit.app/api/reactions')
         if (!response.ok) throw new Error('Failed to fetch reactions')
         setData(await response.json())
       } catch (error) {
