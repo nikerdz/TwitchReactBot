@@ -6,7 +6,12 @@ const PHRASE_COLORS = {
   kekw: 'phrase-kekw',
 }
 
-const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+const rawApiBase = import.meta.env.VITE_API_BASE?.trim() || ''
+const normalizedApiBase = rawApiBase
+  .replace(/\/reactions$/i, '')
+  .replace(/\/api$/i, '')
+  .replace(/\/$/, '')
+const API_BASE = normalizedApiBase ? `${normalizedApiBase}/api` : '/api'
 
 function timeAgo(iso) {
   const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 1000)
