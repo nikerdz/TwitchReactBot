@@ -21,7 +21,7 @@ export default function App() {
     let mounted = true
     async function fetchReactions() {
       try {
-        const response = await fetch('https://backend-bridge--bugwoozin.replit.app/api/reactions')
+        const response = await fetch('/api/reactions')
         if (!response.ok) throw new Error('Failed to fetch reactions')
         const json = await response.json()
         if (mounted) setData(json)

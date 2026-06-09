@@ -12,7 +12,7 @@ export default defineConfig({
   server: {
     port: 5174,
     proxy: {
-      '/api': 'https://backend-bridge--bugwoozin.replit.app/api/reactions'
+      '/api': 'http://localhost:5173'
     }
   }
 })
