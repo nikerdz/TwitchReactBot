@@ -95,3 +95,50 @@ header h1 {
   color: #cbd5e1;
   font-size: 0.95rem;
 }
+
+/* Additional styles for the updated App layout */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.robot { font-size: 1.5rem; }
+.brand-title { margin: 0; font-size: 1.25rem; font-weight: 700; }
+.brand-sub { margin: 0; color: #94a3b8; font-size: 0.85rem; }
+
+.card { margin-top: 20px; padding: 16px; border-radius: 14px; background: rgba(15,23,42,0.95); border: 1px solid rgba(148,163,184,0.08); }
+.status-card-2 .muted-label, .reactions-card .muted-label { text-transform: uppercase; color: #94a3b8; font-size: 0.75rem; letter-spacing: .12em; margin-bottom: 8px; }
+.muted { color: #94a3b8; }
+
+.status-row { display:flex; gap:12px; align-items:center; }
+.dot { height:12px; width:12px; border-radius:50%; display:inline-block; margin-right:8px; }
+.online { background: #34d399; box-shadow: 0 0 8px #34d39966; }
+.offline { background: #fb7185; }
+.status-text { font-weight:600; }
+.online-text { color:#34d399; }
+.offline-text { color:#fb7185; }
+.channel-text { color: #94a3b8; font-size:0.85rem; }
+.channel-link { color:#9f7aea; text-decoration: none; }
+
+.card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.muted-count { color:#64748b; font-size:0.85rem; }
+.no-reactions { text-align:center; color:#64748b; padding:28px 0; }
+
+.reaction-list { list-style:none; margin:0; padding:0; }
+.reaction-item { border:1px solid rgba(148,163,184,0.06); padding:12px; border-radius:10px; margin-bottom:12px; }
+.reaction-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.user-block { display:flex; gap:8px; align-items:center; }
+.user-name { font-weight:700; color:#fff; }
+.phrase-badge { font-family: monospace; font-size:0.75rem; padding:4px 8px; border-radius:8px; border:1px solid rgba(148,163,184,0.08); }
+.phrase-default { background:#0f172a; color:#cbd5e1; border-color: rgba(148,163,184,0.06); }
+.phrase-pog { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+.phrase-hype { background: #fff7ed; color: #9a3412; border-color: #ffd8a8; }
+.phrase-kekw { background: #ecfdf5; color: #166534; border-color: #bbf7d0; }
+
+.reaction-reaction { margin-top:8px; color:#e6e6e6; font-size:0.95rem; }
+.footer { text-align:center; color:#64748b; margin-top:18px; font-size:0.85rem; }

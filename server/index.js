@@ -37,6 +37,41 @@ app.get('/api/status', (req, res) => {
   res.json(status)
 })
 
+// Server-side proxy endpoint to obtain a Twitch App Access Token using
+// client credentials. Keep `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET`
+// in server-side env (not committed).
+app.get('/api/twitch/token', async (req, res) => {
+  const clientId = process.env.TWITCH_CLIENT_ID
+  const clientSecret = process.env.TWITCH_CLIENT_SECRET
+  if (!clientId || !clientSecret) {
+    return res.status(500).json({ error: 'Twitch client credentials not configured on server' })
+  }
+
+  try {
+    const params = new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      grant_type: 'client_credentials'
+    })
+
+    const tokenRes = await fetch(`https://id.twitch.tv/oauth2/token?${params.toString()}`, {
+      method: 'POST'
+    })
+
+    if (!tokenRes.ok) {
+      const txt = await tokenRes.text()
+      return res.status(502).json({ error: 'Failed to fetch token from Twitch', details: txt })
+    }
+
+    const json = await tokenRes.json()
+    // Return only non-secret metadata to the client
+    return res.json({ access_token: json.access_token, expires_in: json.expires_in, token_type: json.token_type })
+  } catch (err) {
+    console.error('Twitch token error', err)
+    return res.status(500).json({ error: 'Internal server error' })
+  }
+})
+
 app.use(express.static(staticDir))
 app.get('*', (req, res) => {
   res.sendFile(path.join(staticDir, 'index.html'))
