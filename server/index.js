@@ -8,7 +8,16 @@ import { startTwitchBot } from './twitchBot.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const app = express()
-const staticDir = path.resolve(__dirname, '..', 'client', 'dist')
+const docsDir = path.resolve(__dirname, '..', 'docs')
+const clientDistDir = path.resolve(__dirname, '..', 'client', 'dist')
+let staticDir = clientDistDir
+if (path.existsSync(docsDir)) {
+  staticDir = docsDir
+} else if (!path.existsSync(clientDistDir)) {
+  console.warn('Warning: no static build directory found in docs or client/dist')
+}
+
+console.log(`Serving static files from: ${staticDir}`)
 
 app.use(cors())
 app.use(express.json())
