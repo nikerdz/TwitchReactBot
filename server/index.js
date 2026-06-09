@@ -1,5 +1,6 @@
 import 'dotenv/config'
 import express from 'express'
+import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import cors from 'cors'
@@ -11,9 +12,9 @@ const app = express()
 const docsDir = path.resolve(__dirname, '..', 'docs')
 const clientDistDir = path.resolve(__dirname, '..', 'client', 'dist')
 let staticDir = clientDistDir
-if (path.existsSync(docsDir)) {
+if (fs.existsSync(docsDir)) {
   staticDir = docsDir
-} else if (!path.existsSync(clientDistDir)) {
+} else if (!fs.existsSync(clientDistDir)) {
   console.warn('Warning: no static build directory found in docs or client/dist')
 }
 
