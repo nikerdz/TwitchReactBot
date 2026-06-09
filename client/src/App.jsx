@@ -6,6 +6,8 @@ const PHRASE_COLORS = {
   kekw: 'phrase-kekw',
 }
 
+const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+
 function timeAgo(iso) {
   const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 1000)
   if (diff < 60) return `${diff}s ago`
@@ -21,7 +23,7 @@ export default function App() {
     let mounted = true
     async function fetchReactions() {
       try {
-        const response = await fetch('/api/reactions')
+        const response = await fetch(`${API_BASE}/reactions`)
         if (!response.ok) throw new Error('Failed to fetch reactions')
         const json = await response.json()
         if (mounted) setData(json)
